@@ -67,7 +67,6 @@ class BiometricAuthUtil {
     }
   }
 
-  /// Actualiza la contraseña del almacenamiento seguro
   Future<void> _updateBiometricData(String pwd) async {
     try {
       await _secureStorageService.setValue(passwordKey, pwd);
@@ -76,7 +75,6 @@ class BiometricAuthUtil {
     }
   }
 
-  /// Obtiene un valor del almacenamiento seguro a partir de una clave
   Future<String?> getValueFromSecureStorage(String key) async {
     return await _secureStorageService.getValue(key);
   }

@@ -15,8 +15,6 @@ class LoginNotifier with ChangeNotifier {
   bool supportBiometric = false;
   bool hasBiometricEnable = false;
 
-  /// Se inicializan las variables de control que permiten mostrar en pantalla
-  /// la opcion para habilitar/deshabilitar y su estado actual
   LoginNotifier(
     BuildContext context, {
     required BiometricAuthUtil biometricAuthUtil,
@@ -41,8 +39,6 @@ class LoginNotifier with ChangeNotifier {
     super.dispose();
   }
 
-  /// Realiza la autenticacion biométrica, si es correcta se accede a las credenciales
-  /// almacenadas del secure storage para continuar con el inicio de sesion
   void biometricAuth(BuildContext context) async {
     if (hasBiometricEnable && supportBiometric) {
       if (await _biometricAuthUtil.biometricAuthenticate()) {
@@ -64,7 +60,6 @@ class LoginNotifier with ChangeNotifier {
     }
   }
 
-  /// Valida el campo de texto para que no esté vacío
   String? validateField(String? value) {
     String? errorMessage;
     if (value == null || value.isEmpty) {
@@ -73,10 +68,8 @@ class LoginNotifier with ChangeNotifier {
     return errorMessage;
   }
 
-  /// Controla el inicio de sesion para validar si es por credenciales o por biometria
-  /// Si recibe las credenciales, es un inicio por biometria
   void handlelogin(
-    BuildContext context, {
+    BuildContext context, { 
     String username = '',
     String password = '',
   }) {
@@ -91,7 +84,6 @@ class LoginNotifier with ChangeNotifier {
     }
   }
 
-  /// Se realiza el inicio de sesion, se simula una llamada a un servicio
   Future<void> loginAction(
     BuildContext context,
     String username,
@@ -100,12 +92,10 @@ class LoginNotifier with ChangeNotifier {
     isLoading = true;
     notifyListeners();
 
-    /// Simula la llamada al servicio de autenticación
     await Future.delayed(const Duration(seconds: 2)).then((value) {
       isLoading = true;
       notifyListeners();
 
-      /// Se almacena temporalmente en un provider las credenciales del usuario
       _sessionNotifier.updateCredentials(username, password);
       Navigator.pushReplacement(context, HomePage.route());
     });

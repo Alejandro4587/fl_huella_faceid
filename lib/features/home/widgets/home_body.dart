@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../provider/provider.dart';
 
-/// {@template home_body}
-/// Body of the HomePage.
-///
-/// Add what it does
-/// {@endtemplate}
+
 class HomeBody extends StatelessWidget {
-  /// {@macro home_body}
+
   const HomeBody({super.key});
 
   @override

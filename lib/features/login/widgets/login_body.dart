@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-
 import '../provider/provider.dart';
 
-/// {@template login_body}
-/// Body of the LoginPage.
-///
-/// Add what it does
-/// {@endtemplate}
+
 class LoginBody extends StatelessWidget {
-  /// {@macro login_body}
+
   const LoginBody({super.key});
 
   @override

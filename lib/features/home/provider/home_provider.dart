@@ -2,9 +2,7 @@ import 'package:fl_huella_faceid/features/home/home.dart';
 import 'package:fl_huella_faceid/global/session_provider.dart';
 import 'package:fl_huella_faceid/utils/biometric_auth_util.dart';
 import 'package:flutter/material.dart';
-
 import '../../login/view/login_page.dart';
-
 
 class HomeNotifier with ChangeNotifier {
   late BiometricAuthUtil _biometricAuthUtil;
@@ -13,8 +11,6 @@ class HomeNotifier with ChangeNotifier {
   bool supportBiometric = false;
   bool hasBiometricEnable = false;
 
-  /// Se inicializan las variables de control que permiten mostrar en pantalla
-  /// la opcion para habilitar/deshabilitar y su estado actual
   HomeNotifier(
     BuildContext context, {
     required BiometricAuthUtil biometricAuthUtil,
@@ -32,7 +28,6 @@ class HomeNotifier with ChangeNotifier {
     });
   }
 
-  /// Se encarga de habilitar/deshabilitar la autenticacion biometrica
   void handleBiometricAuth() {
     if (hasBiometricEnable) {
       _biometricAuthUtil.disableBiometricAuth();
@@ -49,9 +44,7 @@ class HomeNotifier with ChangeNotifier {
     notifyListeners();
   }
 
-  /// Cierra la sesion
   void logOutAction(BuildContext context) {
-    /// Se eliminan las credenciales almacenadas temporalmente
     _sessionNotifier.updateCredentials('', '');
     Navigator.pushReplacement(context, LoginPage.route());
   }
